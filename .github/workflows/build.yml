@@ -1,0 +1,19 @@
+name: lint
+on: workflow_dispatch
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v4
+            - name: Install NodeJs
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: Run lint
+              run: |
+                npm run lint \
+                npm run test \
+                npm run build
